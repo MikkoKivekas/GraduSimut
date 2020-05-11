@@ -193,7 +193,7 @@ void simu( int argc, char **argv )
              << emit.epsilon() << "\n";
         dout.close();
 
-	if( true ) {
+	if( i == 14 ) {
 	    MeshScalarField tdens( geom );
 	    pdb.build_trajectory_density_field( tdens );
 
@@ -272,7 +272,7 @@ int main( int argc, char **argv )
     try {
 	//ibsimu.set_message_output( "ibsimu" + stamp + ".txt" );
         ibsimu.set_message_threshold( MSG_VERBOSE, 1 );
-	ibsimu.set_thread_count( 4 );
+	ibsimu.set_thread_count( 6 );
 	simu( argc, argv );
     } catch( Error e ) {
 	e.print_error_message( ibsimu.message( 0 ) );
