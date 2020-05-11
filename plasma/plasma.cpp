@@ -43,10 +43,10 @@ void simu( int *argc, char ***argv )
   dxffile->set_warning_level( 1 );
   dxffile->read( "plasma.dxf" );
 
-  DXFSolid *s1 = new DXFSolid( dxffile, "electrode 1" );
+  DXFSolid *s1 = new DXFSolid( dxffile, "plasma" );
   s1->scale( 1e-3 );
   geom.set_solid( 7, s1 );
-  DXFSolid *s2 = new DXFSolid( dxffile, "electrode 2" );
+  DXFSolid *s2 = new DXFSolid( dxffile, "puller" );
   s2->scale( 1e-3 );
   geom.set_solid( 8, s2 );
 
