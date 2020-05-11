@@ -272,7 +272,7 @@ int main( int argc, char **argv )
     try {
 	//ibsimu.set_message_output( "ibsimu" + stamp + ".txt" );
         ibsimu.set_message_threshold( MSG_VERBOSE, 1 );
-	ibsimu.set_thread_count( 6 );
+	ibsimu.set_thread_count( 4 );
 	simu( argc, argv );
     } catch( Error e ) {
 	e.print_error_message( ibsimu.message( 0 ) );
