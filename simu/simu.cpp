@@ -22,12 +22,12 @@
 using namespace std;
 
 
-const int nrounds = 15;
+const int nrounds = 150;
 const double r0 = 0.75e-3;
 const double rplasma = 2.0e-3;
 
 const double h = 4e-5;
-const double Nperh = 1000.0;
+const double Nperh = 3000.0;
 const uint32_t Npart = Nperh*rplasma/h;
 
 const double q = 1.0;
