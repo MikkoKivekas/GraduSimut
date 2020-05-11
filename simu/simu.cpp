@@ -118,7 +118,7 @@ void simu( int argc, char **argv )
 
     // Define magnetic field
     bool fout[3] = {true, true, false};
-    MeshVectorField bfield( MODE_CYL, fout, 1.0e-3, 1.0, "../bfield_2d.dat" );
+    MeshVectorField bfield( MODE_CYL, fout, 1.0e-3, 1.0, "bfield_2d.dat" );
     field_extrpl_e bfldextrpl[6] = { FIELD_ZERO, FIELD_ZERO, 
                                      FIELD_ZERO, FIELD_ZERO, 
                                      FIELD_ZERO, FIELD_ZERO };
