@@ -64,7 +64,7 @@ string stamp = "_10";
  */
 
 
-void simu( int argc, char **argv )
+void simu( int *argc, char ***argv )
 {
     double sizereq[3] = { 71.0e-3,
                           25.0e-3, 
@@ -274,7 +274,7 @@ void simu( int argc, char **argv )
 }
 
 
-int main( int argc, char **argv )
+int main( int *argc, char ***argv )
 {
     remove( "emittance.txt" );
 
