@@ -193,7 +193,7 @@ void simu( int argc, char **argv )
              << emit.epsilon() << "\n";
         dout.close();
 
-	if( false ) {
+	if( true ) {
 	    MeshScalarField tdens( geom );
 	    pdb.build_trajectory_density_field( tdens );
 
