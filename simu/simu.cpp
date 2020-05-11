@@ -265,7 +265,7 @@ void simu( int argc, char **argv )
 }
 
 
-int main( int *argc, char ***argv )
+int main( int argc, char **argv )
 {
     remove( "emittance.txt" );
 
