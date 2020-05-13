@@ -280,6 +280,3 @@ int main( int argc, char **argv )
 
     return( 0 );
 }
-
-simu.cpp
-Displaying simu.cpp.
