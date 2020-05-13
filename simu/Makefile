@@ -9,4 +9,4 @@ simu.o: simu.cpp
 	$(CC) -c -o simu.o simu.cpp $(CXXFLAGS)
 
 clean:
-	$(RM) *~ *.o simu 
+	$(RM) *~ *.o simu  
