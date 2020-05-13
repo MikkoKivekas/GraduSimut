@@ -1,8 +1,8 @@
 #include <fstream>
 #include <iomanip>
 #include <limits>
-#include "epot_bicgstabsolver.hpp"
-//#include "epot_umfpacksolver.hpp"
+//#include "epot_bicgstabsolver.hpp"
+#include "epot_umfpacksolver.hpp"
 #include "meshvectorfield.hpp"
 #include "dxf_solid.hpp"
 #include "mydxffile.hpp"
@@ -41,7 +41,7 @@ const double Te = 5.0;
 const double Up = 5.0;
 const double Vplasma = 0;
 const double Vpuller = -7e3;
-const double Veinzel = -1.0e3;
+const double Veinzel = -1.2e3;
 const double Vconv = -7e3;
 const double Vgnd = -15e3;
 const double Veinzel2 = -20e3;
@@ -91,8 +91,8 @@ void simu( int argc, char **argv )
     geom.set_solid( 10, s4 );
     DXFSolid *s5 = new DXFSolid( dxffile, "gnd" );
     geom.set_solid( 11, s5 );
-    //DXFSolid *s6 = new DXFSolid( dxffile, "einzel2" );
-    //geom.set_solid( 12, s6 );
+    DXFSolid *s6 = new DXFSolid( dxffile, "einzel2" );
+    geom.set_solid( 12, s6 );
 
     geom.set_boundary(  1,  Bound(BOUND_NEUMANN,     0.0) );
     geom.set_boundary(  2,  Bound(BOUND_DIRICHLET, Vconv) );
@@ -104,11 +104,11 @@ void simu( int argc, char **argv )
     geom.set_boundary(  9,  Bound(BOUND_DIRICHLET, Veinzel) );
     geom.set_boundary( 10,  Bound(BOUND_DIRICHLET, Vconv) );
     geom.set_boundary( 11,  Bound(BOUND_DIRICHLET, Vgnd) );
-    //geom.set_boundary( 12,  Bound(BOUND_DIRICHLET, Veinzel2) );
+    geom.set_boundary( 12,  Bound(BOUND_DIRICHLET, Veinzel2) );
     geom.build_mesh();
 
     EpotBiCGSTABSolver solver( geom );
-    //EpotUMFPACKSolver solver( geom );
+    EpotUMFPACKSolver solver( geom );
     InitialPlasma initp( AXIS_X, 0.2e-3 );
     solver.set_initial_plasma( Up, &initp );
 
