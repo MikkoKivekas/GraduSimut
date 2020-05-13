@@ -1,8 +1,8 @@
 #include <fstream>
 #include <iomanip>
 #include <limits>
-//#include "epot_bicgstabsolver.hpp"
-#include "epot_umfpacksolver.hpp"
+#include "epot_bicgstabsolver.hpp"
+//#include "epot_umfpacksolver.hpp"
 #include "meshvectorfield.hpp"
 #include "dxf_solid.hpp"
 #include "mydxffile.hpp"
@@ -108,7 +108,7 @@ void simu( int argc, char **argv )
     geom.build_mesh();
 
     EpotBiCGSTABSolver solver( geom );
-    EpotUMFPACKSolver solver( geom );
+    //EpotUMFPACKSolver solver( geom );
     InitialPlasma initp( AXIS_X, 0.2e-3 );
     solver.set_initial_plasma( Up, &initp );
 
