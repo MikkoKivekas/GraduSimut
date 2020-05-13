@@ -1,4 +1,301 @@
-#include <fstream> 
+
+Skip to content
+Using University of Jyväskylä Mail with screen readers
+MeetNew
+Start a meeting
+Join a meeting
+Chat
+1 of 332
+MicroAlphatrossin simulaatiot ja gradupalaute
+Inbox
+	x
+Mikko Kivekäs <mikko.m.kivekas@student.jyu.fi>
+	
+Fri, 27 Mar, 10:22
+	
+to Taneli
+Hei,
+
+oli joskus puhetta niistä MicroAlphatrossin simulaatioista ja etenkin
+kuvista, että jakaisit ne gradua varten. Nyt epidemiasulun aikana
+ehtisin hyvin tutustumaan niihin
+
+Odottelen vieläkin sinun kommentteja gradun 20%-vaiheeseen. Onko
+jotain tiettyjä aiheita ja asioita, joita erityisesti haluat gradussa
+nähdä käsiteltävän?
+
+
+Terveisin
+Mikko Kivekäs
+Kalvas, Taneli <taneli.v.m.kalvas@jyu.fi>
+	
+AttachmentsFri, 27 Mar, 11:06
+	
+to Mikko
+Moi!
+
+Sinulla on varmasti jotain uudempaa jo. Laitatko minulle uusimman version gradusta niin luen läpi.
+
+Simulaatiot on tehty IBSimu-softalla (ibsimu.sourceforge.net). Simulaatio koostuu teknisistä syistä kahdesta osasta. Ensimmäistä ajaa simu.cpp ja toista cont.cpp. Kuvat simulaatioista on ohessa. Geometria tulee dxf-tiedostosta, josta tämä versio 9 on se mitä on tällä hetkellä rakennettuna. Magneettikenttä on tiedostossa bfield_2d.dat. Verkossa on jonkun verran opetusmateriaalia noihin simulaatioihin liitttyen. Katso verkkosivut läpi.
+
+Taneli
+
+--
+Taneli Kalvas
+Ph.D., Senior researcher
+Department of Physics, room FL114
+P.O. Box 35 (YFL)
+40014 University of Jyväskylä, Finland
+Mobile: +358-44-314-1602
+Fax:    +358-14-617-411
+Email:  taneli.kalvas@jyu.fi
+
+________________________________________
+From: Mikko Kivekäs <mikko.m.kivekas@student.jyu.fi>
+Sent: Friday, March 27, 2020 10:22
+To: Kalvas, Taneli
+Subject: MicroAlphatrossin simulaatiot ja gradupalaute
+...
+
+[Message clipped]  View entire message
+6 Attachments
+Mikko Kivekäs
+	
+	AttachmentsFri, 27 Mar, 11:19
+Kiitos, perehdyn simulaatioihin ja IBSimuun. Liitteenä nykyinen versio gradusta, siellä on joitain tiedostettuja muutosta vaativia kohtia ja muistiinpanoja seas
+Kalvas, Taneli
+	
+	Fri, 3 Apr, 11:05
+Tässä vähän kommentteja. Enemmän alussa ja vähemmän lopussa. Filu dropboxissa. Jostain syystä tuosta tuli valtaisan kokoinen. https://www.dropbox.com/s/euy3axqd
+Mikko Kivekäs
+	
+	Thu, 16 Apr, 14:54
+Hei, tässä koitan asennella IBSimua Linux-koneelle, ja IBSimun configurointivaiheessa lyö errorin "required library fontconfig not found". Olen asentanut packag
+taneli.v.m.kalvas@jyu.fi
+	
+	Thu, 16 Apr, 15:57
+Moi! Arvaisin ongelman olevan seuraava. Kirjastot on jaettu kahteen osaa. On ns. binääripaketti joka tarvitaan kirjaston käyttämiseen ja sitten on erikseen osa
+Mikko Kivekäs
+	
+	Thu, 16 Apr, 16:14
+Kiitos, tällä ratkesi ensimmäinen virheilmoitus. Nyt tuli kuitenkin seuraavaksi ilmoitus, ettei vaadittavaa GSL-versiota ei löydy. Onko tähän ongelmaan valistun
+taneli.v.m.kalvas@jyu.fi
+	
+	Thu, 16 Apr, 16:45
+Asensitko gsl:n käsipelillä vai paketinhallinnasta? Jos käsin on arvaukseni se, että profiilistasi puttuu pkg-config -työkalun polusta yksi hakemisto. Myöhemmin
+Mikko Kivekäs
+	
+	Thu, 16 Apr, 17:24
+Hei ja kiitos taas avusta, homma pyörähti käyntiin kun asenteli GSLn uudelleen paketinhallinnasta. Kuitenkin make-vaiheessa tulee uusi ongelma vastaan ja antaa
+taneli.v.m.kalvas@jyu.fi
+	
+	Thu, 16 Apr, 17:59
+Sinulla on kai Macci? Laita configuren perään optio --disable-sigsegv_stack niin tuon pitäisi mennä pois. Sent: Thursday, April 16, 2020 17:24 Email: taneli.kal
+Mikko Kivekäs
+	
+	Fri, 17 Apr, 11:41
+Ei ole Mac, ihan Debian Linux/GNU-distro. Kokeilen miten toimii, jos hylkää virheilmoitukset. Nyt testausvaiheessa en ole kunnolla ymmärtänyt makefilen formaatt
+taneli.v.m.kalvas@jyu.fi
+	
+	Fri, 17 Apr, 16:13
+Hylkää virheilmoitukset? Nyt en ymmärrä. Auttoiko --disable-sigsegv_stack. Siis configure ajetaan ensin ja sitten make. IBSimun tapauksessa configure skripti si
+Mikko Kivekäs
+	
+	Fri, 17 Apr, 17:11
+Laitoin siis -i make-komentojen perään. Ei auttanut --disable-sigsegv_stack, ei edes tunnistanut tätä komentoa, ja configure on ajettu. Kokeilen noita tutoriaal
+taneli.v.m.kalvas@jyu.fi
+	
+	Fri, 17 Apr, 17:18
+Sinun täytyy saada peräkanaa ajettua läpi ./configure --prefix=/home/tvkalvas --disable-sigsegv_stack make make install ilman virheilmoituksia jotta pääset etee
+Mikko Kivekäs
+	
+	Mon, 27 Apr, 16:07
+Hei, olen tässä koittanut asennella IBSimua myös toiselle Linux-koneelle ja sain seuraavanlaisen virheilmoituksen libibsimun make-vaiheessa g++ error: unrecogni
+Kalvas, Taneli
+	
+	Wed, 29 Apr, 10:36
+Make-vaiheen ongelmaa en ymmärrä. Jälkimmäinen ongelma liittyy siihen, että sinulla ei ole PKG_CONFIG_PATH asetettuna oikein. Kuten aikaisemminkin sanoin on esi
+Mikko Kivekäs
+	
+	Wed, 29 Apr, 10:49
+Hei, joo katsotaan vaan huomenna videoyhteydellä kuntoon. 9.30 käy mainiosti.
+Kalvas, Taneli
+	
+	Thu, 30 Apr, 09:32 (13 days ago)
+Join Zoom Meeting https://jyufi.zoom.us/j/68849398957 Meeting ID: 688 4939 8957 Password: 743415 One tap mobile +14086528184,,68849398957# US (San Jose) +166990
+Mikko Kivekäs
+	
+	Tue, 5 May, 11:07 (8 days ago)
+Hei, olen tässä nyt käynyt IBSimun tutoriaalit läpi ja kävin läpi kesäkoulumateriaalit simulaatioineen. Osa kesäkoulun simulaatioista ei ottanut toimiakseen, en
+Kalvas, Taneli
+	
+	Tue, 5 May, 11:16 (8 days ago)
+Jaahas. Kakkosesimerkki sanoo meille siis, että . Layers in dxf-file: 0: '0' 1: 'plasma' 2: 'puller' Koodista taas näemme, että DXF-tiedostosta etsitään layerei
+Mikko Kivekäs
+	
+	Tue, 12 May, 12:55 (20 hours ago)
+Hei, kiitos avusta ja nyt kaikki toimii kuten pitäisi. Olen tässä nyt puuhaillut jotain tuon MicroAlphatrossin simulaation kanssa. Millaisia ajatuksia sinulla o
+Kalvas, Taneli
+	
+07:55 (1 hour ago)
+	
+to Mikko
+Moi!
+
+Ajatukset eivät ole kovin kirkkaat siinä mielessä, että en osaa etukäteen sanoa mikä on oleellista ja mielekästä. Tutkimalla selviää. Lähtökohtaisesti kuitenkin sovelluksen kannalta on oleellista, että saamme läpi riittävän määrän ionivirtaa. Ionivirtaan liittyy sellainen seikka, että emme vielä tiedä paljonko ionilähde tuottaa. Jollain ionivirran määrällä meillä on varmasti melko hyvä läpäisy ekstraktiosysteemin läpi. Kun ionikähteestä tulevan virran määrä kasvaa saattaa jossain kohdassa läpäisy heikentyä. Saman tapaista saattaa tapahtua myös suihkun laadulle. Nämä ovat mielenkiintoisia seikkoja. Suihkun laatua kannattanee tarkastella varauksenvaihtokammioon mennessä. Todellisuudessa varauksenvaihtokammiossa tapahtuu myös sirontaa joka tulee heikentämään suihkun laatua. Tämän vuoksi varauksenvaihdon jälkeen simulaatio antaa vain alarajan emittanssille. Simulaatio jonka annoin sinulle on jossakin määrin optimoitu, mutta sitä on myös tietoisesti "huononnettu", sillä tekniset ratkaisut ovat estäneet ionioptiikan kannalta optimaaliset ratkaistut. Nämä ovat siis erityisesti geometriaan liittyviä ratkaisuja.
+
+Tyypillisesti ongelmallisia paikkoja ekstraktiojärjestelmissä ovat paikat, joissa suihku kulkee läheltä elektrodeja. Näissä paikoissa fokusvoima on usein epälineaarinen, joka aiheuttaa suihkun laadun heikentymistä. Kuitenkin tässä tapauksessa suihku on tietoisesti haluttu kulkemaan ahdasta kanavaa pitkin, koska rubidiumin päätymistä ionilähteeseen on haluttu estää.
+
+Tämä fokus on sellainen seikka jota voisi kenties puida vähän teoreettisestikin ja/tai tutkimalla jotain yksittäistä linssiä simulaatiossa. Periaatteessahan ionioptiikka toimii kuten valo-optiikka. Linssille voidaan määrittää fokaalipituus, joka epälineaarisuuden vuoksi on siis säteen funktio. Eli jos hiukkanen kulkee lähellä optista akselia se taittuu fokaalipituuden f mukaan ja jos hiukkanen on kauempana akselista on fokaalipituus jotain muuta. Voisit kenties rakentaa yksinkertaisen simulaation, jossa on vain einzel-linssi, jonka fokuskäyttäytymistä tutkitaan.
+
+Emittanssiarvo jonka IBSimu antaa ulos on puhdas rms-arvo. Geometrisesti tulkittuna ellipsiksi se on pinta-alaltaan puoliakselien tulo eikä siis ellipsin koko pinta-ala. Tästä syystä joskus pii kirjoitetaan yksikköön. Mikäli kontekstista tai merkinnästä on selvää että puhutaan rms-arvosta ei piin merkitsemiselle ole mitään tarvetta minun mielestäni. Toki kaikki eivät ole tätä mieltä. Emittanssi on ongelmallinen koska konventioita on niin monia. Siksi aina emittanssista puhuttaessa on lukijalle tehtävä selväksi mitä juuri sinä kirjoittajana sillä tarkoitat, jotta tieteellisen tekstin täsmällisyys toteutuu.
+
+Taneli
+
+--
+Taneli Kalvas
+Ph.D., Senior researcher
+Department of Physics, room FL114
+P.O. Box 35 (YFL)
+40014 University of Jyväskylä, Finland
+Mobile: +358-44-314-1602
+Fax:    +358-14-617-411
+Email:  taneli.kalvas@jyu.fi
+
+________________________________________
+From: Mikko Kivekäs <mikko.m.kivekas@student.jyu.fi>
+Sent: Tuesday, May 12, 2020 12:55
+To: Kalvas, Taneli
+Subject: Re: MicroAlphatrossin simulaatiot ja gradupalaute
+
+Hei,
+
+kiitos avusta ja nyt kaikki toimii kuten pitäisi.
+
+Olen tässä nyt puuhaillut jotain tuon MicroAlphatrossin simulaation kanssa. Millaisia ajatuksia sinulla oli gradun simulaatioanalyysin suhteen? Mitkä on niitä tärkeitä suihkuparametreja tarkastella, emittanssi ja ionivirta ainakin? Mistä kohtaa emittanssi tulee määrittää, oletan että juuri ennen varauksenvaihtoa vai vasta sen jälkeen? Onko tähän simulaatioon löydetty jo jotkin optimiparametrit?
+
+Lisäkysymys tuosta simulaation antamasta emittanssin yksiköstä: onko pii leivottu numeroarvon sisään vai miten tuo toimii?
+
+Mikko Kivekäs
+
+Email:  taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi>
+
+________________________________________
+From: Mikko Kivekäs <mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi>>
+Sent: Tuesday, May 5, 2020 11:07
+To: Kalvas, Taneli
+Subject: Re: MicroAlphatrossin simulaatiot ja gradupalaute
+
+Hei,
+
+olen tässä nyt käynyt IBSimun tutoriaalit läpi ja kävin läpi kesäkoulumateriaalit simulaatioineen. Osa kesäkoulun simulaatioista ei ottanut toimiakseen, eniten ongelmia on dxf-tiedostojen kanssa. Esimerkiksi tällainen error-viesti kesäkoulun toisesta esimerkistä plasma.cpp
+   Error in dxf_solid.cpp:73 in DXFSolid(): No entities in layer
+
+Ja einzel3d esimerkissä make antaa virheenä
+   Makefile:20 *** puuttuva erotin. Seis.
+
+
+Mikko Kivekäs
+
+
+
+On Thu, 30 Apr 2020 at 09:32, Kalvas, Taneli <taneli.v.m.kalvas@jyu.fi<mailto:taneli.v.m.kalvas@jyu.fi><mailto:taneli.v.m.kalvas@jyu.fi<mailto:taneli.v.m.kalvas@jyu.fi>>> wrote:
+
+
+--
+Taneli Kalvas
+Ph.D., Senior researcher
+Department of Physics, room FL114
+P.O. Box 35 (YFL)
+40014 University of Jyväskylä, Finland
+Mobile: +358-44-314-1602
+Fax:    +358-14-617-411
+Email:  taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi><mailto:taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi>>
+Join Zoom Meeting
+https://jyufi.zoom.us/j/68849398957
+
+Meeting ID: 688 4939 8957
+Password: 743415
+One tap mobile
++14086528184,,68849398957# US (San Jose)
++16699006833,,68849398957# US (San Jose)
+
+Dial by your location
+        +1 408 652 8184 US (San Jose)
+        +1 669 900 6833 US (San Jose)
+        +1 929 205 6099 US (New York)
+        +1 253 215 8782 US (Tacoma)
+        +1 301 715 8592 US (Germantown)
+        +1 312 626 6799 US (Chicago)
+        +1 346 248 7799 US (Houston)
+Meeting ID: 688 4939 8957
+Find your local number: https://jyufi.zoom.us/u/cbQCL6zyrK
+
+Join by SIP
+68849398957@109.105.112.236<mailto:68849398957@109.105.112.236><mailto:68849398957@109.105.112.236<mailto:68849398957@109.105.112.236>>
+68849398957@109.105.112.235<mailto:68849398957@109.105.112.235><mailto:68849398957@109.105.112.235<mailto:68849398957@109.105.112.235>>
+
+Join by H.323
+109.105.112.236
+109.105.112.235
+Meeting ID: 688 4939 8957
+Password: 743415
+
+
+
+https://jyufi.zoom.us/j/68849398957?pwd=RGw1azVxazFpNHVMclloZ3FTYmJxQT09
+
+--
+Taneli Kalvas
+Ph.D., Senior researcher
+Department of Physics, room FL114
+P.O. Box 35 (YFL)
+40014 University of Jyväskylä, Finland
+Mobile: +358-44-314-1602
+Fax:    +358-14-617-411
+Email:  taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi><mailto:taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi>>
+
+________________________________________
+From: Mikko Kivekäs <mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi><mailto:mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi>>>
+Sent: Wednesday, April 29, 2020 10:49
+To: Kalvas, Taneli
+Subject: Re: MicroAlphatrossin simulaatiot ja gradupalaute
+
+Hei,
+
+joo katsotaan vaan huomenna videoyhteydellä kuntoon. 9.30 käy mainiosti.
+
+Mikko Kivekäs
+
+On Wed, 29 Apr 2020 at 10:36, Kalvas, Taneli <taneli.v.m.kalvas@jyu.fi<mailto:taneli.v.m.kalvas@jyu.fi><mailto:taneli.v.m.kalvas@jyu.fi<mailto:taneli.v.m.kalvas@jyu.fi>><mailto:taneli.v.m.kalvas@jyu.fi<mailto:taneli.v.m.kalvas@jyu.fi><mailto:taneli.v.m.kalvas@jyu.fi<mailto:taneli.v.m.kalvas@jyu.fi>>>> wrote:
+Make-vaiheen ongelmaa en ymmärrä. Jälkimmäinen ongelma liittyy siihen, että sinulla ei ole PKG_CONFIG_PATH asetettuna oikein. Kuten aikaisemminkin sanoin on esim ~/.bashrc -tiedostossa oltava määritettynä ylimmäräiset kirjastohakemistot tähän tapaan:
+
+export PKG_CONFIG_PATH="/home/tvkalvas/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+Jos tästä ei tule mitään näin niin hoidetaan IBSimu kuntoon videoyhteyden kanssa. Esim. huominen on kalenterissa tyhjää. Jos aloitetaan 9:30. Käykö?
+
+Taneli
+
+--
+Taneli Kalvas
+Ph.D., Senior researcher
+Department of Physics, room FL114
+P.O. Box 35 (YFL)
+40014 University of Jyväskylä, Finland
+Mobile: +358-44-314-1602
+Fax:    +358-14-617-411
+Email:  taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi><mailto:taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi>><mailto:taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi><mailto:taneli.kalvas@jyu.fi<mailto:taneli.kalvas@jyu.fi>>>
+
+________________________________________
+From: Mikko Kivekäs <mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi><mailto:mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi>><mailto:mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi><mailto:mikko.m.kivekas@student.jyu.fi<mailto:mikko.m.kivekas@student.jyu.fi>>>>
+...
+
+[Message clipped]  View entire message
+	
+	
+	
+
+#include <fstream>
 #include <iomanip>
 #include <limits>
 #include "epot_bicgstabsolver.hpp"
@@ -41,7 +338,7 @@ const double Te = 5.0;
 const double Up = 5.0;
 const double Vplasma = 0;
 const double Vpuller = -7e3;
-const double Veinzel = -1.2e3;
+const double Veinzel = -1.375e3;
 const double Vconv = -7e3;
 const double Vgnd = -15e3;
 const double Veinzel2 = -20e3;
@@ -75,7 +372,7 @@ void simu( int argc, char **argv )
     Vec3D origo( -1e-3, 0, 0 );
     Geometry geom( MODE_CYL, meshsize, origo, h );
 
-    MyDXFFile *dxffile = new MyDXFFile( "muokattu9.dxf" );
+    MyDXFFile *dxffile = new MyDXFFile( "muokattu10.dxf" );
     dxffile->set_warning_level( 2 );
     MyDXFEntities *e = dxffile->get_entities();
     MyDXFEntitySelection *sel = e->selection_all();
@@ -118,7 +415,7 @@ void simu( int argc, char **argv )
 
     // Define magnetic field
     bool fout[3] = {true, true, false};
-    MeshVectorField bfield( MODE_CYL, fout, 1.0e-3, 1.0, "bfield_2d.dat" );
+    MeshVectorField bfield( MODE_CYL, fout, 1.0e-3, 1.0, "../bfield_2d.dat" );
     field_extrpl_e bfldextrpl[6] = { FIELD_ZERO, FIELD_ZERO, 
                                      FIELD_ZERO, FIELD_ZERO, 
                                      FIELD_ZERO, FIELD_ZERO };
@@ -261,7 +558,6 @@ void simu( int argc, char **argv )
 	plotter.new_geometry_plot_window();
 	plotter.run();
     }
-
 }
 
 
@@ -281,3 +577,6 @@ int main( int argc, char **argv )
 
     return( 0 );
 }
+
+simu.cpp
+Displaying simu.cpp.
