@@ -23,8 +23,8 @@ using namespace std;
 
 
 const int nrounds = 2;
-const double r0 = 0.005;//0.75e-3;
-const double rplasma = 0.005;//2.0e-3;
+const double r0 = 0.75e-3;
+const double rplasma = 2.0e-3;
 
 const double h = 4e-5;
 const double Nperh = 1000.0;
@@ -166,7 +166,7 @@ void simu( int argc, char **argv )
 	ibsimu.message(1) << "J = " << J << " A/m2\n";
 	pdb.add_2d_beam_with_energy( Npart, J, q, m, E0, Tp, Tt, 
 				     origo[0], 0.0, 
-				     origo[0], rplasma );
+				     origo[0], 0.002 );
         pdb.iterate_trajectories( scharge, efield, bfield );
 	rho_tot = pdb.get_rhosum();
 
