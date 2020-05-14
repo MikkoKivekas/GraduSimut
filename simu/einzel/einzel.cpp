@@ -75,22 +75,24 @@ void simu( int argc, char **argv )
     Vec3D origo( -1e-3, 0, 0 );
     Geometry geom( MODE_CYL, meshsize, origo, h );
 
-    MyDXFFile *dxffile = new MyDXFFile( "muokattu9.dxf" );
+    MyDXFFile *dxffile = new MyDXFFile( "einzel.dxf" );
     dxffile->set_warning_level( 2 );
     MyDXFEntities *e = dxffile->get_entities();
     MyDXFEntitySelection *sel = e->selection_all();
     e->scale( sel, dxffile, 1.0e-3 );
-
-    DXFSolid *s1 = new DXFSolid( dxffile, "plasma" );
+	
+    DXFSolid *s1 = new DXFSolid( dxffile, "einzel" );
     geom.set_solid(  7, s1 );
-    DXFSolid *s2 = new DXFSolid( dxffile, "puller" );
-    geom.set_solid(  8, s2 );
-    DXFSolid *s3 = new DXFSolid( dxffile, "einzel" );
-    geom.set_solid(  9, s3 );
-    DXFSolid *s4 = new DXFSolid( dxffile, "conv" );
-    geom.set_solid( 10, s4 );
-    DXFSolid *s5 = new DXFSolid( dxffile, "gnd" );
-    geom.set_solid( 11, s5 );
+    //DXFSolid *s1 = new DXFSolid( dxffile, "plasma" );
+    //geom.set_solid(  7, s1 );
+    //DXFSolid *s2 = new DXFSolid( dxffile, "puller" );
+    //geom.set_solid(  8, s2 );
+    //DXFSolid *s3 = new DXFSolid( dxffile, "einzel" );
+    //geom.set_solid(  9, s3 );
+    //DXFSolid *s4 = new DXFSolid( dxffile, "conv" );
+    //geom.set_solid( 10, s4 );
+    //DXFSolid *s5 = new DXFSolid( dxffile, "gnd" );
+    //geom.set_solid( 11, s5 );
     //DXFSolid *s6 = new DXFSolid( dxffile, "einzel2" );
     //geom.set_solid( 12, s6 );
 
@@ -98,12 +100,12 @@ void simu( int argc, char **argv )
     geom.set_boundary(  2,  Bound(BOUND_DIRICHLET, Vconv) );
     geom.set_boundary(  3,  Bound(BOUND_NEUMANN,     0.0) );
     geom.set_boundary(  4,  Bound(BOUND_NEUMANN,     0.0) );
-
-    geom.set_boundary(  7,  Bound(BOUND_DIRICHLET, Vplasma) );
-    geom.set_boundary(  8,  Bound(BOUND_DIRICHLET, Vpuller) );
-    geom.set_boundary(  9,  Bound(BOUND_DIRICHLET, Veinzel) );
-    geom.set_boundary( 10,  Bound(BOUND_DIRICHLET, Vconv) );
-    geom.set_boundary( 11,  Bound(BOUND_DIRICHLET, Vgnd) );
+    geom.set_boundary(  7,  Bound(BOUND_DIRICHLET, Veinzel) );
+    //geom.set_boundary(  7,  Bound(BOUND_DIRICHLET, Vplasma) );
+    //geom.set_boundary(  8,  Bound(BOUND_DIRICHLET, Vpuller) );
+    //geom.set_boundary(  9,  Bound(BOUND_DIRICHLET, Veinzel) );
+    //geom.set_boundary( 10,  Bound(BOUND_DIRICHLET, Vconv) );
+    //geom.set_boundary( 11,  Bound(BOUND_DIRICHLET, Vgnd) );
     //geom.set_boundary( 12,  Bound(BOUND_DIRICHLET, Veinzel2) );
     geom.build_mesh();
 
