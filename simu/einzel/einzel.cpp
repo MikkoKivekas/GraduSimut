@@ -32,7 +32,7 @@ const uint32_t Npart = Nperh*rplasma/h;
 
 const double q = 1.0;
 const double m = 4.0;
-const double E0 = 4.0;
+const double E0 = 7000.0;
 
 const double Tp = 0.0;
 const double Tt = 0.5;
