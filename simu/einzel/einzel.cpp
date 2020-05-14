@@ -28,7 +28,7 @@ const double rplasma = 0.005;//2.0e-3;
 
 const double h = 4e-5;
 const double Nperh = 1000.0;
-const uint32_t Npart = 200;//Nperh*rplasma/h;
+const uint32_t Npart = 2000;//Nperh*rplasma/h;
 
 const double q = 1.0;
 const double m = 4.0;
