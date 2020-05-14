@@ -22,7 +22,7 @@
 using namespace std;
 
 
-const int nrounds = 15;
+const int nrounds = 2;
 const double r0 = 0.75e-3;
 const double rplasma = 2.0e-3;
 
