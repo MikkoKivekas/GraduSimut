@@ -28,7 +28,7 @@ const double rplasma = 2.0e-3;
 
 const double h = 4e-5;
 const double Nperh = 1000.0;
-const uint32_t Npart = 230;//Nperh*rplasma/h;
+const uint32_t Npart = 220;//Nperh*rplasma/h;
 
 const double q = 1.0;
 const double m = 4.0;
@@ -41,7 +41,7 @@ const double Te = 5.0;
 const double Up = 5.0;
 const double Vplasma = 0;
 const double Vpuller = -7e3;
-const double Veinzel = -1.35e3;
+const double Veinzel = 2.0e3;
 const double Vconv = -7e3;
 const double Vgnd = -15e3;
 const double Veinzel2 = -20e3;
