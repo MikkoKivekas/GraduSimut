@@ -75,7 +75,7 @@ void simu( int argc, char **argv )
     Vec3D origo( -1e-3, 0, 0 );
     Geometry geom( MODE_CYL, meshsize, origo, h );
 
-    MyDXFFile *dxffile = new MyDXFFile( "muokattu10.dxf" );
+    MyDXFFile *dxffile = new MyDXFFile( "muokattu11.dxf" );
     dxffile->set_warning_level( 2 );
     MyDXFEntities *e = dxffile->get_entities();
     MyDXFEntitySelection *sel = e->selection_all();
