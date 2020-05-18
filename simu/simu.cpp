@@ -23,7 +23,7 @@ using namespace std;
 
 
 const int nrounds = 15;
-const double r0 = 0.75e-3;
+const double r0 = 0.5e-3;
 const double rplasma = 2.0e-3;
 
 const double h = 4e-5;
@@ -75,7 +75,7 @@ void simu( int argc, char **argv )
     Vec3D origo( -1e-3, 0, 0 );
     Geometry geom( MODE_CYL, meshsize, origo, h );
 
-    MyDXFFile *dxffile = new MyDXFFile( "muokattu9.dxf" );
+    MyDXFFile *dxffile = new MyDXFFile( "muokattu10.dxf" );
     dxffile->set_warning_level( 2 );
     MyDXFEntities *e = dxffile->get_entities();
     MyDXFEntitySelection *sel = e->selection_all();
