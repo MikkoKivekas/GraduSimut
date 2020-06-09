@@ -80,7 +80,8 @@ void simu( int argc, char **argv )
                     (int)floor(sizereq[1]/h)+1,
                     (int)floor(sizereq[2]/h)+1 );
     Vec3D origo( -1e-3, 0, 0 );
-    Geometry geom( MODE_CYL, meshsize, origo, h );
+    //Geometry geom( MODE_CYL, meshsize, origo, h );
+    Geometry geom( MODE_2D, meshsize, origo, h );
 	
     Solid *s1 = new FuncSolid( solid1 );
     geom.set_solid( 7, s1 );
