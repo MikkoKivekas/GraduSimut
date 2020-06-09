@@ -22,17 +22,17 @@
 using namespace std;
 
 
-const int nrounds = 2;
+const int nrounds = 15;
 const double r0 = 0.75e-3;
 const double rplasma = 2.0e-3;
 
 const double h = 4e-5;
 const double Nperh = 1000.0;
-const uint32_t Npart = 220;//Nperh*rplasma/h;
+const uint32_t Npart = Nperh*rplasma/h;
 
 const double q = 1.0;
 const double m = 4.0;
-const double E0 = 7000.0;
+const double E0 = 4.0;
 
 const double Tp = 0.0;
 const double Tt = 0.5;
@@ -40,33 +40,40 @@ const double Tt = 0.5;
 const double Te = 5.0;
 const double Up = 5.0;
 const double Vplasma = 0;
-const double Vpuller = -7e3;
-const double Veinzel = -1.0e3;
-const double Vconv = -7e3;
+const double Vpuller = -10e3;
+const double Veinzel = -1.3e3;
+const double Vconv = Vpuller;
 const double Vgnd = -15e3;
 const double Veinzel2 = -20e3;
 const double I = 1e-3;
 const double J = 1.35*I/(M_PI*r0*r0);
 
 const double sc_alpha = 0.5;
-string stamp = "_10";
+string stamp = "_lens_focus";
 
-/* Veinzel    Ibound2(cont)
- * -1.0e3     0.000147271 A
- * -1.125e3   0.00019536 A
- * -1.25e3    0.000219463 A
- * -1.375e3   0.000204841 A,    0.000203443 A without bfield
- * -1.5e3     0.000172724 A
- * -1.75      0.000123436 A
- * -2.0e3     9.28533e-05 A
- *
- * Total current 0.00103587 A
- */
+
+bool solid1( double x, double y, double z )
+{
+    return(  x >= 0.008 && x <= 0.0085 && y >= 0.002 );
+}
+
+
+bool solid2( double x, double y, double z )
+{
+    return( x >= 0.023 && x <= 0.028 && y >= 0.04 );
+}
+
+
+bool solid3( double x, double y, double z )
+{
+    return( x >= 0.038 && x <= 0.093 && y >= 0.03);
+}
+
 
 
 void simu( int argc, char **argv )
 {
-    double sizereq[3] = { 71.0e-3,
+    double sizereq[3] = { 50.0e-3,
                           25.0e-3, 
                            0.0e-3 };
     Int3D meshsize( (int)floor(sizereq[0]/h)+1,
@@ -74,39 +81,23 @@ void simu( int argc, char **argv )
                     (int)floor(sizereq[2]/h)+1 );
     Vec3D origo( -1e-3, 0, 0 );
     Geometry geom( MODE_CYL, meshsize, origo, h );
-
-    MyDXFFile *dxffile = new MyDXFFile( "einzel.dxf" );
-    dxffile->set_warning_level( 2 );
-    MyDXFEntities *e = dxffile->get_entities();
-    MyDXFEntitySelection *sel = e->selection_all();
-    e->scale( sel, dxffile, 1.0e-3 );
 	
-    DXFSolid *s1 = new DXFSolid( dxffile, "einzel" );
-    geom.set_solid(  7, s1 );
-    //DXFSolid *s1 = new DXFSolid( dxffile, "plasma" );
-    //geom.set_solid(  7, s1 );
-    //DXFSolid *s2 = new DXFSolid( dxffile, "puller" );
-    //geom.set_solid(  8, s2 );
-    //DXFSolid *s3 = new DXFSolid( dxffile, "einzel" );
-    //geom.set_solid(  9, s3 );
-    //DXFSolid *s4 = new DXFSolid( dxffile, "conv" );
-    //geom.set_solid( 10, s4 );
-    //DXFSolid *s5 = new DXFSolid( dxffile, "gnd" );
-    //geom.set_solid( 11, s5 );
-    //DXFSolid *s6 = new DXFSolid( dxffile, "einzel2" );
-    //geom.set_solid( 12, s6 );
+    Solid *s1 = new FuncSolid( solid1 );
+    geom.set_solid( 7, s1 );
+    Solid *s2 = new FuncSolid( solid2 );
+    geom.set_solid( 8, s2 );
+    Solid *s3 = new FuncSolid( solid3 );
+    geom.set_solid( 9, s3 );
 
     geom.set_boundary(  1,  Bound(BOUND_NEUMANN,     0.0) );
     geom.set_boundary(  2,  Bound(BOUND_DIRICHLET, Vconv) );
     geom.set_boundary(  3,  Bound(BOUND_NEUMANN,     0.0) );
     geom.set_boundary(  4,  Bound(BOUND_NEUMANN,     0.0) );
-    geom.set_boundary(  7,  Bound(BOUND_DIRICHLET, Veinzel) );
-    //geom.set_boundary(  7,  Bound(BOUND_DIRICHLET, Vplasma) );
-    //geom.set_boundary(  8,  Bound(BOUND_DIRICHLET, Vpuller) );
-    //geom.set_boundary(  9,  Bound(BOUND_DIRICHLET, Veinzel) );
-    //geom.set_boundary( 10,  Bound(BOUND_DIRICHLET, Vconv) );
-    //geom.set_boundary( 11,  Bound(BOUND_DIRICHLET, Vgnd) );
-    //geom.set_boundary( 12,  Bound(BOUND_DIRICHLET, Veinzel2) );
+
+    geom.set_boundary(  7,  Bound(BOUND_DIRICHLET, Vpuller) );
+    geom.set_boundary(  8,  Bound(BOUND_DIRICHLET, Veinzel) );
+    geom.set_boundary(  9,  Bound(BOUND_DIRICHLET, Vconv) );
+
     geom.build_mesh();
 
     EpotBiCGSTABSolver solver( geom );
@@ -166,7 +157,7 @@ void simu( int argc, char **argv )
 	ibsimu.message(1) << "J = " << J << " A/m2\n";
 	pdb.add_2d_beam_with_energy( Npart, J, q, m, E0, Tp, Tt, 
 				     origo[0], 0.0, 
-				     origo[0], 0.002 );
+				     origo[0], rplasma );
         pdb.iterate_trajectories( scharge, efield, bfield );
 	rho_tot = pdb.get_rhosum();
 
